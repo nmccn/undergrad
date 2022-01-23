@@ -1,0 +1,6 @@
+%%From the Handout, f[k]
+T = 0.1e-3;
+N0 = 128;
+T0 = N0*T;
+ft = inline(?cos(2*pi*1100*t)?);
+fk = T*ft([0:1:N0-1]?*T);

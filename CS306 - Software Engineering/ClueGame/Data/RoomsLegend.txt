@@ -1,0 +1,11 @@
+X, closet, Other
+W, Walkway, Other
+B, Bowling Alley, Card
+L, Library, Card
+C, Conservatory, Card
+K, Kitchen, Card
+P, Pantry, Card
+M, Mom's Room, Card
+H, Hallway, Card
+D, Dining Room, Card
+G, Garage, Card

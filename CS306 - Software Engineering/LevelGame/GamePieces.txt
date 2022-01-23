@@ -1,0 +1,6 @@
+﻿Nicholas McClellan
+Marie McCarthy
+Benjamin Jessing
+
+
+To summarize, the completed level game features 6 different pieces, a cat, dog, king, queen, knight, and pawn. In general, five of the pieces interact with the player and one does not. More specifically, the cat piece does not interact with the player and as such is only drawable, meaning it does not extend GamePiece. Further, two of the pieces are able to move, and as such implement moveable. The two pieces capable of moving are the knight and the dog and they move in random and linear patterns respectively. Finally, all pieces other than the cat have associated interaction results, using one of each type of InteractionResult. Moreover, the king and dog pieces interact with the player from a distance, one and two spaces respectively. With that in mind, the three remaining pieces can only interact with the player when they occupy the same space.

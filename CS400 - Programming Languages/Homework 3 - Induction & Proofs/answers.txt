@@ -1,0 +1,99 @@
+Let P(x) be max(x) <= sum(x). Where, max([]) = -∞, and sum([]) = 0, and x is a list of NATURAL numbers (n >= 0).
+
+Task 1: Example Cases
+In general, this is intuitively true for all lists containing natural numbers, however two example lists supporting this are the following:
+    Given List, [] ->
+        max([]) = -∞, and sum([]) = 0
+        -∞ <= 0 ✓
+    Example List1, [10] ->
+        max([10]) = 10, and sum([10]) = 10
+        10 <= 10 ✓
+    Example List2, [10;20] ->
+        max([10;20]) = 20, and sum([10;20]) = 30
+        20 <= 30 ✓
+
+** I want to preface the following proofs with the fact that I am highly confused by exactly how these are supposed to look. ** 
+
+Task 2: Weak Induction
+To prove that P(x) holds for all lists of natural numbers, x, I will use Weak Induction.
+
+Basis Step:
+    Prove that P([]) (Len = 0) is true:
+        max([]) = -∞, and sum([]) = 0
+        -∞ <= 0
+
+Inductive Step:
+    Prove that P([1]) (Len = 1) is true:
+    max([n]) = n, and sum([]) = n
+    n <= n
+
+Therefore, we have shown P(x) holds for all lists of natural numbers x.
+
+Task 3: Strong Induction
+To prove that P(x) holds for all lists of natural numbers, x, I will use Strong Induction.
+
+Basis Step:
+    Prove that P([]) (Len = 0) is true:
+        max([]) = -∞, and sum([]) = 0
+        -∞ <= 0
+    Prove that P([1]) (Len = 1) is true:
+        max([n]) = n, and sum([]) = n
+        n <= n
+
+Inductive Step:
+    Assume that P(k) holds for some k such that 0 <= k <= 1. Need to show that P(k) also holds for k >= 2
+    Prove that P([2]) (Len = 2) is true:
+        P([2]) = [a;b] where a,b >= 0
+        sum([a;b]) = a + b
+        max([a:b]) = a || b
+        Recall P(x) states max(x) <= sum(x). Therefore:
+            a || b <= a + b
+        I will use proof by cases to prove the above statement:
+
+        Case 1: a || b = a
+            a <= a + b
+            0 <= b, given a and b are both natural numbers, we know this is true.
+        Case 2: a || b = b 
+            b <= a + b
+            0 <= a, given a and b are both natural numbers, we know this is true. 
+
+Therefore, we have shown P(x) holds for all lists of natural numbers x.
+
+Task 4: Structural Induction (Weak)
+To prove that P(x) holds for all lists of natural numbers, x, I will use Structural Induction.
+
+Empty Rule:
+    P([]) holds because, as shown in Task 1, max([]) = -∞ andsum([]) = 0.
+        -∞ <= 0 ✓
+
+Cons Rule:
+    Show that P(n::t) holds under the assumption that P(t) holds.
+    Recall, P(x) is max(x) <= sum(x). Where, max([]) = -∞, and sum([]) = 0, and x is a list of NATURAL numbers (n >= 0).
+    Assume that P(t) holds for some list t, containing only natural numbers, such that t ∈ List and n ∈ N.
+    The following simplifications can be made:
+        sum(n::t) = n + sum(t)
+        max(n::t) = max(n, max(t))
+                  = max(n) || max(t) 
+                  = n || max(t)
+    Therefore, we can arrive at the following inequality:
+        n || max(t) <= n + sum(t)
+    I will prove this to be true using proof by cases: (This is where I kind of feel a disconnect, am I supposed to recall this from CSCI358?)
+        In general, there are 3 cases above, n = max(t), n < max(t), or n > max(t).
+
+        Case 1: n = max(t)
+        In this case, the left side of the inequality evaluates to n regardless.
+            n <= n + sum(t), knowing that the list only contains natural numbers this can be verified to be true. 
+            0 <= sum(t), a non empty list cannot have a sum <= 0.
+
+        Case 2: n < max(t)
+        In this case, the left side of the inequality evaluates to max(t).
+            max(t) <= n + sum(t)
+            From P(t) we know that max(t) <= sum(t), therefore, we can verify this case to also be true.
+            0 <= n + 1, or something like this. (Not sure how to best represent this numerically.)
+
+        Case 3: n > max(t)
+        In this case, the left side of the inequality evaluates to n, similar to case 1.
+            n <= n + sum(t), knowing that the list only contains natural numbers this can be verified to be true. 
+            0 <= sum(t), a non empty list cannot have a sum <= 0.
+
+Therefore, we have shown P(n::t) holds.

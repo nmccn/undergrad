@@ -1,0 +1,16 @@
+Question 1:
+Inside of the Eclipse IDE, the file->revert option changes the file to the state in which in was last saved. For example, after messing with the indentation and then
+saving the file, correcting the indentation and reverting will result in the aforementioned saved file. 
+
+Question 2:
+For each friend in the array, the loop steps through various checks to ensure the provided data can be used, as well as calls various functions to print the contents. 
+When stepping through the loop, the debugger will take you into a number of other files as it goes into each function as it is called by the other.
+
+Question 3:
+After commenting out the toString function, the output becomes impossible for a human to interpret. Instead it returns gibberish data, shown below:
+ 
+Friend: Name & Memory Address??
+Who's Coming to the Party?
+Friend@1e81f4dc
+Friend@4d591d15
+Friend@65ae6ba4

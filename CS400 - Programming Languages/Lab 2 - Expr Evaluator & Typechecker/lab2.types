@@ -1,0 +1,31 @@
+exception NotExpr of Javascript_ast.program_t
+exception Unimplemented of Javascript_ast.expr_t
+val get_expr : Javascript_ast.program_t -> Javascript_ast.expr_t
+val parse_expr : string -> Javascript_ast.expr_t
+val eval : Javascript_ast.expr_t -> Javascript_ast.value_t
+val simple_eval_tests :
+  string * (Javascript_ast.expr_t -> Javascript_ast.value_t) *
+  (Javascript_ast.value_t -> Javascript_ast.value_t -> bool) *
+  ((Javascript_ast.expr_t -> string) * (Javascript_ast.value_t -> string))
+  option * ('a option * Javascript_ast.expr_t * Javascript_ast.value_t) list
+val eval_tests :
+  string * (Javascript_ast.expr_t -> Javascript_ast.value_t) *
+  (Javascript_ast.value_t -> Javascript_ast.value_t -> bool) *
+  ((Javascript_ast.expr_t -> string) * (Javascript_ast.value_t -> string))
+  option *
+  (string option * Javascript_ast.expr_t * Javascript_ast.value_t) list
+val typecheck : Javascript_ast.expr_t -> Javascript_ast.typ_t option
+val simple_typecheck_tests :
+  string * (Javascript_ast.expr_t -> Javascript_ast.typ_t option) *
+  (Javascript_ast.typ_t option -> Javascript_ast.typ_t option -> bool) *
+  ((Javascript_ast.expr_t -> string) *
+   (Javascript_ast.typ_t option -> string))
+  option *
+  (string option * Javascript_ast.expr_t * Javascript_ast.typ_t option) list
+val typecheck_tests :
+  string * (Javascript_ast.expr_t -> Javascript_ast.typ_t option) *
+  (Javascript_ast.typ_t option -> Javascript_ast.typ_t option -> bool) *
+  ((Javascript_ast.expr_t -> string) *
+   (Javascript_ast.typ_t option -> string))
+  option *
+  (string option * Javascript_ast.expr_t * Javascript_ast.typ_t option) list

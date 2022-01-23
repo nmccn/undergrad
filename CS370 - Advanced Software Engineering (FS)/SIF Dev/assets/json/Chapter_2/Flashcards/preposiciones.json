@@ -1,0 +1,47 @@
+[
+    {
+        "Question":"a la derecha",
+        "Answer":"on the right",
+        "Path" : "assets/images/bpl_Logo.png"
+    },
+    {
+        "Question":"a la izquierda",
+        "Answer":"on the left",
+        "Path" : "assets/images/bpl_Logo.png"
+    },
+    {
+        "Question":"derecho",
+        "Answer":"straight",
+        "Path" : "assets/images/bpl_Logo.png"
+    },
+    {
+        "Question":"en frente (de)",
+        "Answer":"in front (of)",
+        "Path" : "assets/images/bpl_Logo.png"
+    },
+    {
+        "Question":"a la derecha",
+        "Answer":"on the right",
+        "Path" : "assets/images/bpl_Logo.png"
+    },
+    {
+        "Question":"detrás (de) - atrás (de)",
+        "Answer":"behind",
+        "Path" : "assets/images/bpl_Logo.png"
+    },
+    {
+        "Question":"al lado (de)",
+        "Answer":"beside",
+        "Path" : "assets/images/bpl_Logo.png"
+    },
+    {
+        "Question":"encima (de)",
+        "Answer":"on",
+        "Path" : "assets/images/bpl_Logo.png"
+    },
+    {
+        "Question":"debajo (de)",
+        "Answer":"under",
+        "Path" : "assets/images/bpl_Logo.png"
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+      "question": "Choose the indefinite articles:\n_____ libro _____ libros/a",
+      "answers": [
+        {"text": "unos, unas", "score": 0},
+        {"text": "un, unos", "score": 1},
+        {"text": "una, unas", "score": 0}
+      ],
+      "path": "assets/images/cerebrillo.png"
+    },
+    {
+        "question": "Fill in the blanks:\n _____ mesa _____ mesas/a",
+        "answers": [
+          {"text": "una, unas", "score": 1},
+          {"text": "una, unos", "score": 0},
+          {"text": "un, unos", "score": 0}
+        ],
+      "path": "assets/images/cerebrillo.png"
+    },
+    {
+        "question": "Fill in the blanks:\n _____ escritorio _____ escritorio/a",
+        "answers": [
+          {"text": "una, unos", "score": 0},
+          {"text": "un, unas", "score": 0},
+          {"text": "un, unos", "score": 1}
+        ],
+      "path": "assets/images/cerebrillo.png"
+    },
+    {
+        "question": "Fill in the blanks:\n _____ reloj _____ relojes/a",
+        "answers": [
+          {"text": "una, unos", "score": 0},
+          {"text": "un, unos", "score": 1},
+          {"text": "un, unas", "score": 0}
+        ],
+      "path": "assets/images/cerebrillo.png"
+    }, {
+        "question": "Fill in the blanks:\n _____ profesor _____ projesores/a",
+        "answers": [
+          {"text": "una, unos", "score": 0},
+          {"text": "un, unas", "score": 0},
+          {"text": "un, unos", "score": 1}
+        ],
+      "path": "assets/images/cerebrillo.png"
+    }, {
+        "question": "Fill in the blanks:\n _____ perro _____ perros/a",
+        "answers": [
+          {"text": "un, unos", "score": 1},
+          {"text": "una, unos", "score": 0},
+          {"text": "un, unas", "score": 0}
+        ],
+      "path": "assets/images/cerebrillo.png"
+    }, {
+        "question": "Fill in the blanks:\n _____ lámpara _____ lámparas/a",
+        "answers": [
+          {"text": "una, unos", "score": 0},
+          {"text": "una, unas", "score": 1},
+          {"text": "un, unos", "score": 0}
+        ],
+      "path": "assets/images/cerebrillo.png"
+    }
+]

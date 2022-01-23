@@ -1,0 +1,7 @@
+We changed the config files to "BoardLayoutCSV.csv" and "RoomsLegend.txt" because that's the name of our files.
+We changed the names and initials in TestRooms to match our legend.
+Conservatory has a right facing door.
+Library has a down facing door.
+Mom's room has a left facing door.
+Hallway has a upward facing door.
+WE changed testRoomIntials to match our layout.

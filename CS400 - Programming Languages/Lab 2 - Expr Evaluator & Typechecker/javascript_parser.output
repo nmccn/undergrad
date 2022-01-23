@@ -1,0 +1,2311 @@
+   0  $accept : %entry% $end
+
+   1  start : startAux
+
+   2  startAux : program EOF
+
+   3  program : programAux
+
+   4  programAux : expr1
+   5             | stmt BLOCK_1_1 programAux
+
+   6  stmt : stmtAux
+
+   7  stmtAux : CONST_KW IDENT1 STMT_2_1 expr1
+   8          | LET_KW IDENT1 STMT_2_1 expr1
+   9          | expr1 STMT_2_1 expr1
+
+  10  expr1 : expr1Aux
+
+  11  expr1Aux : IDENT1
+  12           | value1
+  13           | EXPR1_7_1 expr1Aux
+  14           | EXPR1_3_0 expr1Aux
+  15           | expr1Aux EXPR1_4_1 expr1Aux
+  16           | expr1Aux EXPR1_5_1 expr1Aux
+  17           | expr1Aux EXPR1_6_1 expr1Aux
+  18           | expr1Aux EXPR1_7_1 expr1Aux
+  19           | expr1Aux EXPR1_8_1 expr1Aux
+  20           | expr1Aux EXPR1_9_1 expr1Aux
+  21           | expr1Aux EXPR1_10_1 expr1Aux
+  22           | expr1Aux EXPR1_11_1 expr1Aux
+  23           | expr1Aux EXPR1_12_1 expr1Aux
+  24           | expr1Aux EXPR1_13_1 expr1Aux
+  25           | expr1Aux EXPR1_14_1 expr1Aux
+  26           | expr1Aux EXPR1_15_1 expr1Aux
+  27           | expr1Aux EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux
+  28           | EXPR1_17_0 EXPR1_19_1 EXPR1_17_2 EXPR1_18_1 expr1Aux LAMBDA1_0_4
+  29           | expr1Aux EXPR1_18_1 expr_list LAMBDA1_0_4
+  30           | expr1Aux EXPR1_19_1 IDENT1
+  31           | LAMBDA1_0_5 field_list LAMBDA1_0_7
+  32           | EXPR1_18_1 expr1Aux LAMBDA1_0_4
+
+  33  value1 : value1Aux
+
+  34  value1Aux : NUMBER
+  35            | bool
+  36            | STRING
+  37            | UNDEF_KW
+  38            | lambda1
+
+  39  lambda1 : lambda1Aux
+
+  40  lambda1Aux : FUNC_KW lambda1_0_1 EXPR1_18_1 ident_list LAMBDA1_0_4 LAMBDA1_0_5 block LAMBDA1_0_7
+
+  41  lambda1_0_1 : lambda1_0_1Aux
+
+  42  lambda1_0_1Aux : Empty
+  43                 | IDENT1
+
+  44  block : blockAux
+
+  45  blockAux : RET_KW expr1
+  46           | stmt BLOCK_1_1 blockAux
+
+  47  field_list : field_listAux
+
+  48  field_listAux : Empty
+  49                | field field_list_1_1
+
+  50  field_list_1_1 : field_list_1_1Aux
+
+  51  field_list_1_1Aux : Empty
+  52                    | field_list_1_1Aux field_list_1_1_0
+
+  53  field_list_1_1_0 : field_list_1_1_0Aux
+
+  54  field_list_1_1_0Aux : IDENT_LIST_1_1_0_0_0 field
+
+  55  expr_list : expr_listAux
+
+  56  expr_listAux : Empty
+  57               | expr1 expr_list_1_1
+
+  58  expr_list_1_1 : expr_list_1_1Aux
+
+  59  expr_list_1_1Aux : Empty
+  60                   | expr_list_1_1Aux expr_list_1_1_0
+
+  61  expr_list_1_1_0 : expr_list_1_1_0Aux
+
+  62  expr_list_1_1_0Aux : IDENT_LIST_1_1_0_0_0 expr1
+
+  63  ident_list : ident_listAux
+
+  64  ident_listAux : Empty
+  65                | IDENT1 ident_list_1_1
+
+  66  ident_list_1_1 : ident_list_1_1Aux
+
+  67  ident_list_1_1Aux : Empty
+  68                    | ident_list_1_1Aux ident_list_1_1_0
+
+  69  ident_list_1_1_0 : ident_list_1_1_0Aux
+
+  70  ident_list_1_1_0Aux : IDENT_LIST_1_1_0_0_0 IDENT1
+
+  71  field : fieldAux
+
+  72  fieldAux : IDENT1 EXPR1_16_3 expr1
+
+  73  bool : boolAux
+
+  74  boolAux : TRUE_KW
+  75          | FALSE_KW
+
+  76  Empty :
+
+  77  %entry% : '\001' start
+
+state 0
+	$accept : . %entry% $end  (0)
+
+	'\001'  shift 1
+	.  error
+
+	%entry%  goto 2
+
+
+state 1
+	%entry% : '\001' . start  (77)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	CONST_KW  shift 11
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	LET_KW  shift 14
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	start  goto 17
+	startAux  goto 18
+	program  goto 19
+	programAux  goto 20
+	expr1  goto 21
+	stmt  goto 22
+	stmtAux  goto 23
+	expr1Aux  goto 24
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 2
+	$accept : %entry% . $end  (0)
+
+	$end  accept
+
+
+state 3
+	expr1Aux : EXPR1_18_1 . expr1Aux LAMBDA1_0_4  (32)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1Aux  goto 31
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 4
+	expr1Aux : EXPR1_3_0 . expr1Aux  (14)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1Aux  goto 32
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 5
+	expr1Aux : EXPR1_7_1 . expr1Aux  (13)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1Aux  goto 33
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 6
+	expr1Aux : LAMBDA1_0_5 . field_list LAMBDA1_0_7  (31)
+	Empty : .  (76)
+
+	IDENT1  shift 34
+	LAMBDA1_0_7  reduce 76
+
+	field_list  goto 35
+	Empty  goto 36
+	field_listAux  goto 37
+	field  goto 38
+	fieldAux  goto 39
+
+
+state 7
+	value1Aux : NUMBER .  (34)
+
+	.  reduce 34
+
+
+state 8
+	expr1Aux : EXPR1_17_0 . EXPR1_19_1 EXPR1_17_2 EXPR1_18_1 expr1Aux LAMBDA1_0_4  (28)
+
+	EXPR1_19_1  shift 40
+	.  error
+
+
+state 9
+	expr1Aux : IDENT1 .  (11)
+
+	.  reduce 11
+
+
+state 10
+	value1Aux : STRING .  (36)
+
+	.  reduce 36
+
+
+state 11
+	stmtAux : CONST_KW . IDENT1 STMT_2_1 expr1  (7)
+
+	IDENT1  shift 41
+	.  error
+
+
+state 12
+	boolAux : FALSE_KW .  (75)
+
+	.  reduce 75
+
+
+state 13
+	lambda1Aux : FUNC_KW . lambda1_0_1 EXPR1_18_1 ident_list LAMBDA1_0_4 LAMBDA1_0_5 block LAMBDA1_0_7  (40)
+	Empty : .  (76)
+
+	IDENT1  shift 42
+	EXPR1_18_1  reduce 76
+
+	lambda1_0_1  goto 43
+	lambda1_0_1Aux  goto 44
+	Empty  goto 45
+
+
+state 14
+	stmtAux : LET_KW . IDENT1 STMT_2_1 expr1  (8)
+
+	IDENT1  shift 46
+	.  error
+
+
+state 15
+	boolAux : TRUE_KW .  (74)
+
+	.  reduce 74
+
+
+state 16
+	value1Aux : UNDEF_KW .  (37)
+
+	.  reduce 37
+
+
+state 17
+	%entry% : '\001' start .  (77)
+
+	.  reduce 77
+
+
+state 18
+	start : startAux .  (1)
+
+	.  reduce 1
+
+
+state 19
+	startAux : program . EOF  (2)
+
+	EOF  shift 47
+	.  error
+
+
+state 20
+	program : programAux .  (3)
+
+	.  reduce 3
+
+
+state 21
+	programAux : expr1 .  (4)
+	stmtAux : expr1 . STMT_2_1 expr1  (9)
+
+	STMT_2_1  shift 48
+	EOF  reduce 4
+
+
+state 22
+	programAux : stmt . BLOCK_1_1 programAux  (5)
+
+	BLOCK_1_1  shift 49
+	.  error
+
+
+state 23
+	stmt : stmtAux .  (6)
+
+	.  reduce 6
+
+
+state 24
+	expr1 : expr1Aux .  (10)
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+
+	EXPR1_11_1  shift 50
+	EXPR1_16_1  shift 51
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EXPR1_4_1  shift 54
+	EXPR1_5_1  shift 55
+	EXPR1_6_1  shift 56
+	EXPR1_7_1  shift 57
+	EXPR1_9_1  shift 58
+	EXPR1_10_1  shift 59
+	EXPR1_12_1  shift 60
+	EXPR1_13_1  shift 61
+	EXPR1_14_1  shift 62
+	EXPR1_15_1  shift 63
+	EXPR1_8_1  shift 64
+	EOF  reduce 10
+	BLOCK_1_1  reduce 10
+	IDENT_LIST_1_1_0_0_0  reduce 10
+	LAMBDA1_0_4  reduce 10
+	LAMBDA1_0_7  reduce 10
+	STMT_2_1  reduce 10
+
+
+state 25
+	expr1Aux : value1 .  (12)
+
+	.  reduce 12
+
+
+state 26
+	value1 : value1Aux .  (33)
+
+	.  reduce 33
+
+
+state 27
+	value1Aux : bool .  (35)
+
+	.  reduce 35
+
+
+state 28
+	value1Aux : lambda1 .  (38)
+
+	.  reduce 38
+
+
+state 29
+	lambda1 : lambda1Aux .  (39)
+
+	.  reduce 39
+
+
+state 30
+	bool : boolAux .  (73)
+
+	.  reduce 73
+
+
+state 31
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+	expr1Aux : EXPR1_18_1 expr1Aux . LAMBDA1_0_4  (32)
+
+	EXPR1_11_1  shift 50
+	EXPR1_16_1  shift 51
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EXPR1_4_1  shift 54
+	EXPR1_5_1  shift 55
+	EXPR1_6_1  shift 56
+	EXPR1_7_1  shift 57
+	EXPR1_9_1  shift 58
+	LAMBDA1_0_4  shift 65
+	EXPR1_10_1  shift 59
+	EXPR1_12_1  shift 60
+	EXPR1_13_1  shift 61
+	EXPR1_14_1  shift 62
+	EXPR1_15_1  shift 63
+	EXPR1_8_1  shift 64
+	.  error
+
+
+state 32
+	expr1Aux : EXPR1_3_0 expr1Aux .  (14)
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EOF  reduce 14
+	BLOCK_1_1  reduce 14
+	EXPR1_11_1  reduce 14
+	EXPR1_16_1  reduce 14
+	EXPR1_16_3  reduce 14
+	EXPR1_4_1  reduce 14
+	EXPR1_5_1  reduce 14
+	EXPR1_6_1  reduce 14
+	EXPR1_7_1  reduce 14
+	EXPR1_9_1  reduce 14
+	IDENT_LIST_1_1_0_0_0  reduce 14
+	LAMBDA1_0_4  reduce 14
+	LAMBDA1_0_7  reduce 14
+	STMT_2_1  reduce 14
+	EXPR1_10_1  reduce 14
+	EXPR1_12_1  reduce 14
+	EXPR1_13_1  reduce 14
+	EXPR1_14_1  reduce 14
+	EXPR1_15_1  reduce 14
+	EXPR1_8_1  reduce 14
+
+
+state 33
+	expr1Aux : EXPR1_7_1 expr1Aux .  (13)
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EOF  reduce 13
+	BLOCK_1_1  reduce 13
+	EXPR1_11_1  reduce 13
+	EXPR1_16_1  reduce 13
+	EXPR1_16_3  reduce 13
+	EXPR1_4_1  reduce 13
+	EXPR1_5_1  reduce 13
+	EXPR1_6_1  reduce 13
+	EXPR1_7_1  reduce 13
+	EXPR1_9_1  reduce 13
+	IDENT_LIST_1_1_0_0_0  reduce 13
+	LAMBDA1_0_4  reduce 13
+	LAMBDA1_0_7  reduce 13
+	STMT_2_1  reduce 13
+	EXPR1_10_1  reduce 13
+	EXPR1_12_1  reduce 13
+	EXPR1_13_1  reduce 13
+	EXPR1_14_1  reduce 13
+	EXPR1_15_1  reduce 13
+	EXPR1_8_1  reduce 13
+
+
+state 34
+	fieldAux : IDENT1 . EXPR1_16_3 expr1  (72)
+
+	EXPR1_16_3  shift 66
+	.  error
+
+
+state 35
+	expr1Aux : LAMBDA1_0_5 field_list . LAMBDA1_0_7  (31)
+
+	LAMBDA1_0_7  shift 67
+	.  error
+
+
+state 36
+	field_listAux : Empty .  (48)
+
+	.  reduce 48
+
+
+state 37
+	field_list : field_listAux .  (47)
+
+	.  reduce 47
+
+
+state 38
+	field_listAux : field . field_list_1_1  (49)
+	Empty : .  (76)
+
+	.  reduce 76
+
+	Empty  goto 68
+	field_list_1_1  goto 69
+	field_list_1_1Aux  goto 70
+
+
+state 39
+	field : fieldAux .  (71)
+
+	.  reduce 71
+
+
+state 40
+	expr1Aux : EXPR1_17_0 EXPR1_19_1 . EXPR1_17_2 EXPR1_18_1 expr1Aux LAMBDA1_0_4  (28)
+
+	EXPR1_17_2  shift 71
+	.  error
+
+
+state 41
+	stmtAux : CONST_KW IDENT1 . STMT_2_1 expr1  (7)
+
+	STMT_2_1  shift 72
+	.  error
+
+
+state 42
+	lambda1_0_1Aux : IDENT1 .  (43)
+
+	.  reduce 43
+
+
+state 43
+	lambda1Aux : FUNC_KW lambda1_0_1 . EXPR1_18_1 ident_list LAMBDA1_0_4 LAMBDA1_0_5 block LAMBDA1_0_7  (40)
+
+	EXPR1_18_1  shift 73
+	.  error
+
+
+state 44
+	lambda1_0_1 : lambda1_0_1Aux .  (41)
+
+	.  reduce 41
+
+
+state 45
+	lambda1_0_1Aux : Empty .  (42)
+
+	.  reduce 42
+
+
+state 46
+	stmtAux : LET_KW IDENT1 . STMT_2_1 expr1  (8)
+
+	STMT_2_1  shift 74
+	.  error
+
+
+state 47
+	startAux : program EOF .  (2)
+
+	.  reduce 2
+
+
+state 48
+	stmtAux : expr1 STMT_2_1 . expr1  (9)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1  goto 75
+	expr1Aux  goto 24
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 49
+	programAux : stmt BLOCK_1_1 . programAux  (5)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	CONST_KW  shift 11
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	LET_KW  shift 14
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	programAux  goto 76
+	expr1  goto 21
+	stmt  goto 22
+	stmtAux  goto 23
+	expr1Aux  goto 24
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 50
+	expr1Aux : expr1Aux EXPR1_11_1 . expr1Aux  (22)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1Aux  goto 77
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 51
+	expr1Aux : expr1Aux EXPR1_16_1 . expr1Aux EXPR1_16_3 expr1Aux  (27)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1Aux  goto 78
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 52
+	expr1Aux : expr1Aux EXPR1_18_1 . expr_list LAMBDA1_0_4  (29)
+	Empty : .  (76)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	LAMBDA1_0_4  reduce 76
+
+	expr1  goto 79
+	expr1Aux  goto 24
+	value1  goto 25
+	expr_list  goto 80
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	Empty  goto 81
+	expr_listAux  goto 82
+	boolAux  goto 30
+
+
+state 53
+	expr1Aux : expr1Aux EXPR1_19_1 . IDENT1  (30)
+
+	IDENT1  shift 83
+	.  error
+
+
+state 54
+	expr1Aux : expr1Aux EXPR1_4_1 . expr1Aux  (15)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1Aux  goto 84
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 55
+	expr1Aux : expr1Aux EXPR1_5_1 . expr1Aux  (16)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1Aux  goto 85
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 56
+	expr1Aux : expr1Aux EXPR1_6_1 . expr1Aux  (17)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1Aux  goto 86
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 57
+	expr1Aux : expr1Aux EXPR1_7_1 . expr1Aux  (18)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1Aux  goto 87
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 58
+	expr1Aux : expr1Aux EXPR1_9_1 . expr1Aux  (20)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1Aux  goto 88
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 59
+	expr1Aux : expr1Aux EXPR1_10_1 . expr1Aux  (21)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1Aux  goto 89
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 60
+	expr1Aux : expr1Aux EXPR1_12_1 . expr1Aux  (23)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1Aux  goto 90
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 61
+	expr1Aux : expr1Aux EXPR1_13_1 . expr1Aux  (24)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1Aux  goto 91
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 62
+	expr1Aux : expr1Aux EXPR1_14_1 . expr1Aux  (25)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1Aux  goto 92
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 63
+	expr1Aux : expr1Aux EXPR1_15_1 . expr1Aux  (26)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1Aux  goto 93
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 64
+	expr1Aux : expr1Aux EXPR1_8_1 . expr1Aux  (19)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1Aux  goto 94
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 65
+	expr1Aux : EXPR1_18_1 expr1Aux LAMBDA1_0_4 .  (32)
+
+	.  reduce 32
+
+
+state 66
+	fieldAux : IDENT1 EXPR1_16_3 . expr1  (72)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1  goto 95
+	expr1Aux  goto 24
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 67
+	expr1Aux : LAMBDA1_0_5 field_list LAMBDA1_0_7 .  (31)
+
+	.  reduce 31
+
+
+state 68
+	field_list_1_1Aux : Empty .  (51)
+
+	.  reduce 51
+
+
+state 69
+	field_listAux : field field_list_1_1 .  (49)
+
+	.  reduce 49
+
+
+state 70
+	field_list_1_1 : field_list_1_1Aux .  (50)
+	field_list_1_1Aux : field_list_1_1Aux . field_list_1_1_0  (52)
+
+	IDENT_LIST_1_1_0_0_0  shift 96
+	LAMBDA1_0_7  reduce 50
+
+	field_list_1_1_0  goto 97
+	field_list_1_1_0Aux  goto 98
+
+
+state 71
+	expr1Aux : EXPR1_17_0 EXPR1_19_1 EXPR1_17_2 . EXPR1_18_1 expr1Aux LAMBDA1_0_4  (28)
+
+	EXPR1_18_1  shift 99
+	.  error
+
+
+state 72
+	stmtAux : CONST_KW IDENT1 STMT_2_1 . expr1  (7)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1  goto 100
+	expr1Aux  goto 24
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 73
+	lambda1Aux : FUNC_KW lambda1_0_1 EXPR1_18_1 . ident_list LAMBDA1_0_4 LAMBDA1_0_5 block LAMBDA1_0_7  (40)
+	Empty : .  (76)
+
+	IDENT1  shift 101
+	LAMBDA1_0_4  reduce 76
+
+	ident_list  goto 102
+	Empty  goto 103
+	ident_listAux  goto 104
+
+
+state 74
+	stmtAux : LET_KW IDENT1 STMT_2_1 . expr1  (8)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1  goto 105
+	expr1Aux  goto 24
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 75
+	stmtAux : expr1 STMT_2_1 expr1 .  (9)
+
+	.  reduce 9
+
+
+state 76
+	programAux : stmt BLOCK_1_1 programAux .  (5)
+
+	.  reduce 5
+
+
+state 77
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux EXPR1_11_1 expr1Aux .  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EXPR1_4_1  shift 54
+	EXPR1_5_1  shift 55
+	EXPR1_6_1  shift 56
+	EXPR1_7_1  shift 57
+	EOF  reduce 22
+	BLOCK_1_1  reduce 22
+	EXPR1_11_1  reduce 22
+	EXPR1_16_1  reduce 22
+	EXPR1_16_3  reduce 22
+	EXPR1_9_1  reduce 22
+	IDENT_LIST_1_1_0_0_0  reduce 22
+	LAMBDA1_0_4  reduce 22
+	LAMBDA1_0_7  reduce 22
+	STMT_2_1  reduce 22
+	EXPR1_10_1  reduce 22
+	EXPR1_12_1  reduce 22
+	EXPR1_13_1  reduce 22
+	EXPR1_14_1  reduce 22
+	EXPR1_15_1  reduce 22
+	EXPR1_8_1  reduce 22
+
+
+state 78
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux EXPR1_16_1 expr1Aux . EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+
+	EXPR1_11_1  shift 50
+	EXPR1_16_1  shift 51
+	EXPR1_16_3  shift 106
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EXPR1_4_1  shift 54
+	EXPR1_5_1  shift 55
+	EXPR1_6_1  shift 56
+	EXPR1_7_1  shift 57
+	EXPR1_9_1  shift 58
+	EXPR1_10_1  shift 59
+	EXPR1_12_1  shift 60
+	EXPR1_13_1  shift 61
+	EXPR1_14_1  shift 62
+	EXPR1_15_1  shift 63
+	EXPR1_8_1  shift 64
+	.  error
+
+
+state 79
+	expr_listAux : expr1 . expr_list_1_1  (57)
+	Empty : .  (76)
+
+	.  reduce 76
+
+	Empty  goto 107
+	expr_list_1_1  goto 108
+	expr_list_1_1Aux  goto 109
+
+
+state 80
+	expr1Aux : expr1Aux EXPR1_18_1 expr_list . LAMBDA1_0_4  (29)
+
+	LAMBDA1_0_4  shift 110
+	.  error
+
+
+state 81
+	expr_listAux : Empty .  (56)
+
+	.  reduce 56
+
+
+state 82
+	expr_list : expr_listAux .  (55)
+
+	.  reduce 55
+
+
+state 83
+	expr1Aux : expr1Aux EXPR1_19_1 IDENT1 .  (30)
+
+	.  reduce 30
+
+
+state 84
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux EXPR1_4_1 expr1Aux .  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EOF  reduce 15
+	BLOCK_1_1  reduce 15
+	EXPR1_11_1  reduce 15
+	EXPR1_16_1  reduce 15
+	EXPR1_16_3  reduce 15
+	EXPR1_4_1  reduce 15
+	EXPR1_5_1  reduce 15
+	EXPR1_6_1  reduce 15
+	EXPR1_7_1  reduce 15
+	EXPR1_9_1  reduce 15
+	IDENT_LIST_1_1_0_0_0  reduce 15
+	LAMBDA1_0_4  reduce 15
+	LAMBDA1_0_7  reduce 15
+	STMT_2_1  reduce 15
+	EXPR1_10_1  reduce 15
+	EXPR1_12_1  reduce 15
+	EXPR1_13_1  reduce 15
+	EXPR1_14_1  reduce 15
+	EXPR1_15_1  reduce 15
+	EXPR1_8_1  reduce 15
+
+
+state 85
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux EXPR1_5_1 expr1Aux .  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EOF  reduce 16
+	BLOCK_1_1  reduce 16
+	EXPR1_11_1  reduce 16
+	EXPR1_16_1  reduce 16
+	EXPR1_16_3  reduce 16
+	EXPR1_4_1  reduce 16
+	EXPR1_5_1  reduce 16
+	EXPR1_6_1  reduce 16
+	EXPR1_7_1  reduce 16
+	EXPR1_9_1  reduce 16
+	IDENT_LIST_1_1_0_0_0  reduce 16
+	LAMBDA1_0_4  reduce 16
+	LAMBDA1_0_7  reduce 16
+	STMT_2_1  reduce 16
+	EXPR1_10_1  reduce 16
+	EXPR1_12_1  reduce 16
+	EXPR1_13_1  reduce 16
+	EXPR1_14_1  reduce 16
+	EXPR1_15_1  reduce 16
+	EXPR1_8_1  reduce 16
+
+
+state 86
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux EXPR1_6_1 expr1Aux .  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EXPR1_4_1  shift 54
+	EXPR1_5_1  shift 55
+	EOF  reduce 17
+	BLOCK_1_1  reduce 17
+	EXPR1_11_1  reduce 17
+	EXPR1_16_1  reduce 17
+	EXPR1_16_3  reduce 17
+	EXPR1_6_1  reduce 17
+	EXPR1_7_1  reduce 17
+	EXPR1_9_1  reduce 17
+	IDENT_LIST_1_1_0_0_0  reduce 17
+	LAMBDA1_0_4  reduce 17
+	LAMBDA1_0_7  reduce 17
+	STMT_2_1  reduce 17
+	EXPR1_10_1  reduce 17
+	EXPR1_12_1  reduce 17
+	EXPR1_13_1  reduce 17
+	EXPR1_14_1  reduce 17
+	EXPR1_15_1  reduce 17
+	EXPR1_8_1  reduce 17
+
+
+state 87
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux EXPR1_7_1 expr1Aux .  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EXPR1_4_1  shift 54
+	EXPR1_5_1  shift 55
+	EOF  reduce 18
+	BLOCK_1_1  reduce 18
+	EXPR1_11_1  reduce 18
+	EXPR1_16_1  reduce 18
+	EXPR1_16_3  reduce 18
+	EXPR1_6_1  reduce 18
+	EXPR1_7_1  reduce 18
+	EXPR1_9_1  reduce 18
+	IDENT_LIST_1_1_0_0_0  reduce 18
+	LAMBDA1_0_4  reduce 18
+	LAMBDA1_0_7  reduce 18
+	STMT_2_1  reduce 18
+	EXPR1_10_1  reduce 18
+	EXPR1_12_1  reduce 18
+	EXPR1_13_1  reduce 18
+	EXPR1_14_1  reduce 18
+	EXPR1_15_1  reduce 18
+	EXPR1_8_1  reduce 18
+
+
+state 88
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux EXPR1_9_1 expr1Aux .  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EXPR1_4_1  shift 54
+	EXPR1_5_1  shift 55
+	EXPR1_6_1  shift 56
+	EXPR1_7_1  shift 57
+	EOF  reduce 20
+	BLOCK_1_1  reduce 20
+	EXPR1_11_1  reduce 20
+	EXPR1_16_1  reduce 20
+	EXPR1_16_3  reduce 20
+	EXPR1_9_1  reduce 20
+	IDENT_LIST_1_1_0_0_0  reduce 20
+	LAMBDA1_0_4  reduce 20
+	LAMBDA1_0_7  reduce 20
+	STMT_2_1  reduce 20
+	EXPR1_10_1  reduce 20
+	EXPR1_12_1  reduce 20
+	EXPR1_13_1  reduce 20
+	EXPR1_14_1  reduce 20
+	EXPR1_15_1  reduce 20
+	EXPR1_8_1  reduce 20
+
+
+state 89
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux EXPR1_10_1 expr1Aux .  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EXPR1_4_1  shift 54
+	EXPR1_5_1  shift 55
+	EXPR1_6_1  shift 56
+	EXPR1_7_1  shift 57
+	EOF  reduce 21
+	BLOCK_1_1  reduce 21
+	EXPR1_11_1  reduce 21
+	EXPR1_16_1  reduce 21
+	EXPR1_16_3  reduce 21
+	EXPR1_9_1  reduce 21
+	IDENT_LIST_1_1_0_0_0  reduce 21
+	LAMBDA1_0_4  reduce 21
+	LAMBDA1_0_7  reduce 21
+	STMT_2_1  reduce 21
+	EXPR1_10_1  reduce 21
+	EXPR1_12_1  reduce 21
+	EXPR1_13_1  reduce 21
+	EXPR1_14_1  reduce 21
+	EXPR1_15_1  reduce 21
+	EXPR1_8_1  reduce 21
+
+
+state 90
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux EXPR1_12_1 expr1Aux .  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+
+	EXPR1_11_1  shift 50
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EXPR1_4_1  shift 54
+	EXPR1_5_1  shift 55
+	EXPR1_6_1  shift 56
+	EXPR1_7_1  shift 57
+	EXPR1_9_1  shift 58
+	EXPR1_10_1  shift 59
+	EXPR1_8_1  shift 64
+	EOF  reduce 23
+	BLOCK_1_1  reduce 23
+	EXPR1_16_1  reduce 23
+	EXPR1_16_3  reduce 23
+	IDENT_LIST_1_1_0_0_0  reduce 23
+	LAMBDA1_0_4  reduce 23
+	LAMBDA1_0_7  reduce 23
+	STMT_2_1  reduce 23
+	EXPR1_12_1  reduce 23
+	EXPR1_13_1  reduce 23
+	EXPR1_14_1  reduce 23
+	EXPR1_15_1  reduce 23
+
+
+state 91
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux EXPR1_13_1 expr1Aux .  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+
+	EXPR1_11_1  shift 50
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EXPR1_4_1  shift 54
+	EXPR1_5_1  shift 55
+	EXPR1_6_1  shift 56
+	EXPR1_7_1  shift 57
+	EXPR1_9_1  shift 58
+	EXPR1_10_1  shift 59
+	EXPR1_8_1  shift 64
+	EOF  reduce 24
+	BLOCK_1_1  reduce 24
+	EXPR1_16_1  reduce 24
+	EXPR1_16_3  reduce 24
+	IDENT_LIST_1_1_0_0_0  reduce 24
+	LAMBDA1_0_4  reduce 24
+	LAMBDA1_0_7  reduce 24
+	STMT_2_1  reduce 24
+	EXPR1_12_1  reduce 24
+	EXPR1_13_1  reduce 24
+	EXPR1_14_1  reduce 24
+	EXPR1_15_1  reduce 24
+
+
+state 92
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux EXPR1_14_1 expr1Aux .  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+
+	EXPR1_11_1  shift 50
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EXPR1_4_1  shift 54
+	EXPR1_5_1  shift 55
+	EXPR1_6_1  shift 56
+	EXPR1_7_1  shift 57
+	EXPR1_9_1  shift 58
+	EXPR1_10_1  shift 59
+	EXPR1_12_1  shift 60
+	EXPR1_13_1  shift 61
+	EXPR1_8_1  shift 64
+	EOF  reduce 25
+	BLOCK_1_1  reduce 25
+	EXPR1_16_1  reduce 25
+	EXPR1_16_3  reduce 25
+	IDENT_LIST_1_1_0_0_0  reduce 25
+	LAMBDA1_0_4  reduce 25
+	LAMBDA1_0_7  reduce 25
+	STMT_2_1  reduce 25
+	EXPR1_14_1  reduce 25
+	EXPR1_15_1  reduce 25
+
+
+state 93
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux EXPR1_15_1 expr1Aux .  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+
+	EXPR1_11_1  shift 50
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EXPR1_4_1  shift 54
+	EXPR1_5_1  shift 55
+	EXPR1_6_1  shift 56
+	EXPR1_7_1  shift 57
+	EXPR1_9_1  shift 58
+	EXPR1_10_1  shift 59
+	EXPR1_12_1  shift 60
+	EXPR1_13_1  shift 61
+	EXPR1_14_1  shift 62
+	EXPR1_8_1  shift 64
+	EOF  reduce 26
+	BLOCK_1_1  reduce 26
+	EXPR1_16_1  reduce 26
+	EXPR1_16_3  reduce 26
+	IDENT_LIST_1_1_0_0_0  reduce 26
+	LAMBDA1_0_4  reduce 26
+	LAMBDA1_0_7  reduce 26
+	STMT_2_1  reduce 26
+	EXPR1_15_1  reduce 26
+
+
+state 94
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux EXPR1_8_1 expr1Aux .  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EXPR1_4_1  shift 54
+	EXPR1_5_1  shift 55
+	EXPR1_6_1  shift 56
+	EXPR1_7_1  shift 57
+	EOF  reduce 19
+	BLOCK_1_1  reduce 19
+	EXPR1_11_1  reduce 19
+	EXPR1_16_1  reduce 19
+	EXPR1_16_3  reduce 19
+	EXPR1_9_1  reduce 19
+	IDENT_LIST_1_1_0_0_0  reduce 19
+	LAMBDA1_0_4  reduce 19
+	LAMBDA1_0_7  reduce 19
+	STMT_2_1  reduce 19
+	EXPR1_10_1  reduce 19
+	EXPR1_12_1  reduce 19
+	EXPR1_13_1  reduce 19
+	EXPR1_14_1  reduce 19
+	EXPR1_15_1  reduce 19
+	EXPR1_8_1  reduce 19
+
+
+state 95
+	fieldAux : IDENT1 EXPR1_16_3 expr1 .  (72)
+
+	.  reduce 72
+
+
+state 96
+	field_list_1_1_0Aux : IDENT_LIST_1_1_0_0_0 . field  (54)
+
+	IDENT1  shift 34
+	.  error
+
+	field  goto 111
+	fieldAux  goto 39
+
+
+state 97
+	field_list_1_1Aux : field_list_1_1Aux field_list_1_1_0 .  (52)
+
+	.  reduce 52
+
+
+state 98
+	field_list_1_1_0 : field_list_1_1_0Aux .  (53)
+
+	.  reduce 53
+
+
+state 99
+	expr1Aux : EXPR1_17_0 EXPR1_19_1 EXPR1_17_2 EXPR1_18_1 . expr1Aux LAMBDA1_0_4  (28)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1Aux  goto 112
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 100
+	stmtAux : CONST_KW IDENT1 STMT_2_1 expr1 .  (7)
+
+	.  reduce 7
+
+
+state 101
+	ident_listAux : IDENT1 . ident_list_1_1  (65)
+	Empty : .  (76)
+
+	.  reduce 76
+
+	Empty  goto 113
+	ident_list_1_1  goto 114
+	ident_list_1_1Aux  goto 115
+
+
+state 102
+	lambda1Aux : FUNC_KW lambda1_0_1 EXPR1_18_1 ident_list . LAMBDA1_0_4 LAMBDA1_0_5 block LAMBDA1_0_7  (40)
+
+	LAMBDA1_0_4  shift 116
+	.  error
+
+
+state 103
+	ident_listAux : Empty .  (64)
+
+	.  reduce 64
+
+
+state 104
+	ident_list : ident_listAux .  (63)
+
+	.  reduce 63
+
+
+state 105
+	stmtAux : LET_KW IDENT1 STMT_2_1 expr1 .  (8)
+
+	.  reduce 8
+
+
+state 106
+	expr1Aux : expr1Aux EXPR1_16_1 expr1Aux EXPR1_16_3 . expr1Aux  (27)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1Aux  goto 117
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 107
+	expr_list_1_1Aux : Empty .  (59)
+
+	.  reduce 59
+
+
+state 108
+	expr_listAux : expr1 expr_list_1_1 .  (57)
+
+	.  reduce 57
+
+
+state 109
+	expr_list_1_1 : expr_list_1_1Aux .  (58)
+	expr_list_1_1Aux : expr_list_1_1Aux . expr_list_1_1_0  (60)
+
+	IDENT_LIST_1_1_0_0_0  shift 118
+	LAMBDA1_0_4  reduce 58
+
+	expr_list_1_1_0  goto 119
+	expr_list_1_1_0Aux  goto 120
+
+
+state 110
+	expr1Aux : expr1Aux EXPR1_18_1 expr_list LAMBDA1_0_4 .  (29)
+
+	.  reduce 29
+
+
+state 111
+	field_list_1_1_0Aux : IDENT_LIST_1_1_0_0_0 field .  (54)
+
+	.  reduce 54
+
+
+state 112
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : EXPR1_17_0 EXPR1_19_1 EXPR1_17_2 EXPR1_18_1 expr1Aux . LAMBDA1_0_4  (28)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+
+	EXPR1_11_1  shift 50
+	EXPR1_16_1  shift 51
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EXPR1_4_1  shift 54
+	EXPR1_5_1  shift 55
+	EXPR1_6_1  shift 56
+	EXPR1_7_1  shift 57
+	EXPR1_9_1  shift 58
+	LAMBDA1_0_4  shift 121
+	EXPR1_10_1  shift 59
+	EXPR1_12_1  shift 60
+	EXPR1_13_1  shift 61
+	EXPR1_14_1  shift 62
+	EXPR1_15_1  shift 63
+	EXPR1_8_1  shift 64
+	.  error
+
+
+state 113
+	ident_list_1_1Aux : Empty .  (67)
+
+	.  reduce 67
+
+
+state 114
+	ident_listAux : IDENT1 ident_list_1_1 .  (65)
+
+	.  reduce 65
+
+
+state 115
+	ident_list_1_1 : ident_list_1_1Aux .  (66)
+	ident_list_1_1Aux : ident_list_1_1Aux . ident_list_1_1_0  (68)
+
+	IDENT_LIST_1_1_0_0_0  shift 122
+	LAMBDA1_0_4  reduce 66
+
+	ident_list_1_1_0  goto 123
+	ident_list_1_1_0Aux  goto 124
+
+
+state 116
+	lambda1Aux : FUNC_KW lambda1_0_1 EXPR1_18_1 ident_list LAMBDA1_0_4 . LAMBDA1_0_5 block LAMBDA1_0_7  (40)
+
+	LAMBDA1_0_5  shift 125
+	.  error
+
+
+state 117
+	expr1Aux : expr1Aux . EXPR1_4_1 expr1Aux  (15)
+	expr1Aux : expr1Aux . EXPR1_5_1 expr1Aux  (16)
+	expr1Aux : expr1Aux . EXPR1_6_1 expr1Aux  (17)
+	expr1Aux : expr1Aux . EXPR1_7_1 expr1Aux  (18)
+	expr1Aux : expr1Aux . EXPR1_8_1 expr1Aux  (19)
+	expr1Aux : expr1Aux . EXPR1_9_1 expr1Aux  (20)
+	expr1Aux : expr1Aux . EXPR1_10_1 expr1Aux  (21)
+	expr1Aux : expr1Aux . EXPR1_11_1 expr1Aux  (22)
+	expr1Aux : expr1Aux . EXPR1_12_1 expr1Aux  (23)
+	expr1Aux : expr1Aux . EXPR1_13_1 expr1Aux  (24)
+	expr1Aux : expr1Aux . EXPR1_14_1 expr1Aux  (25)
+	expr1Aux : expr1Aux . EXPR1_15_1 expr1Aux  (26)
+	expr1Aux : expr1Aux . EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux  (27)
+	expr1Aux : expr1Aux EXPR1_16_1 expr1Aux EXPR1_16_3 expr1Aux .  (27)
+	expr1Aux : expr1Aux . EXPR1_18_1 expr_list LAMBDA1_0_4  (29)
+	expr1Aux : expr1Aux . EXPR1_19_1 IDENT1  (30)
+
+	EXPR1_11_1  shift 50
+	EXPR1_16_1  shift 51
+	EXPR1_18_1  shift 52
+	EXPR1_19_1  shift 53
+	EXPR1_4_1  shift 54
+	EXPR1_5_1  shift 55
+	EXPR1_6_1  shift 56
+	EXPR1_7_1  shift 57
+	EXPR1_9_1  shift 58
+	EXPR1_10_1  shift 59
+	EXPR1_12_1  shift 60
+	EXPR1_13_1  shift 61
+	EXPR1_14_1  shift 62
+	EXPR1_15_1  shift 63
+	EXPR1_8_1  shift 64
+	EOF  reduce 27
+	BLOCK_1_1  reduce 27
+	EXPR1_16_3  reduce 27
+	IDENT_LIST_1_1_0_0_0  reduce 27
+	LAMBDA1_0_4  reduce 27
+	LAMBDA1_0_7  reduce 27
+	STMT_2_1  reduce 27
+
+
+state 118
+	expr_list_1_1_0Aux : IDENT_LIST_1_1_0_0_0 . expr1  (62)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1  goto 126
+	expr1Aux  goto 24
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 119
+	expr_list_1_1Aux : expr_list_1_1Aux expr_list_1_1_0 .  (60)
+
+	.  reduce 60
+
+
+state 120
+	expr_list_1_1_0 : expr_list_1_1_0Aux .  (61)
+
+	.  reduce 61
+
+
+state 121
+	expr1Aux : EXPR1_17_0 EXPR1_19_1 EXPR1_17_2 EXPR1_18_1 expr1Aux LAMBDA1_0_4 .  (28)
+
+	.  reduce 28
+
+
+state 122
+	ident_list_1_1_0Aux : IDENT_LIST_1_1_0_0_0 . IDENT1  (70)
+
+	IDENT1  shift 127
+	.  error
+
+
+state 123
+	ident_list_1_1Aux : ident_list_1_1Aux ident_list_1_1_0 .  (68)
+
+	.  reduce 68
+
+
+state 124
+	ident_list_1_1_0 : ident_list_1_1_0Aux .  (69)
+
+	.  reduce 69
+
+
+state 125
+	lambda1Aux : FUNC_KW lambda1_0_1 EXPR1_18_1 ident_list LAMBDA1_0_4 LAMBDA1_0_5 . block LAMBDA1_0_7  (40)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	CONST_KW  shift 11
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	LET_KW  shift 14
+	RET_KW  shift 128
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1  goto 129
+	stmt  goto 130
+	stmtAux  goto 23
+	expr1Aux  goto 24
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	block  goto 131
+	blockAux  goto 132
+	boolAux  goto 30
+
+
+state 126
+	expr_list_1_1_0Aux : IDENT_LIST_1_1_0_0_0 expr1 .  (62)
+
+	.  reduce 62
+
+
+state 127
+	ident_list_1_1_0Aux : IDENT_LIST_1_1_0_0_0 IDENT1 .  (70)
+
+	.  reduce 70
+
+
+state 128
+	blockAux : RET_KW . expr1  (45)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1  goto 133
+	expr1Aux  goto 24
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	boolAux  goto 30
+
+
+state 129
+	stmtAux : expr1 . STMT_2_1 expr1  (9)
+
+	STMT_2_1  shift 48
+	.  error
+
+
+state 130
+	blockAux : stmt . BLOCK_1_1 blockAux  (46)
+
+	BLOCK_1_1  shift 134
+	.  error
+
+
+state 131
+	lambda1Aux : FUNC_KW lambda1_0_1 EXPR1_18_1 ident_list LAMBDA1_0_4 LAMBDA1_0_5 block . LAMBDA1_0_7  (40)
+
+	LAMBDA1_0_7  shift 135
+	.  error
+
+
+state 132
+	block : blockAux .  (44)
+
+	.  reduce 44
+
+
+state 133
+	blockAux : RET_KW expr1 .  (45)
+
+	.  reduce 45
+
+
+state 134
+	blockAux : stmt BLOCK_1_1 . blockAux  (46)
+
+	EXPR1_18_1  shift 3
+	EXPR1_3_0  shift 4
+	EXPR1_7_1  shift 5
+	LAMBDA1_0_5  shift 6
+	NUMBER  shift 7
+	EXPR1_17_0  shift 8
+	IDENT1  shift 9
+	STRING  shift 10
+	CONST_KW  shift 11
+	FALSE_KW  shift 12
+	FUNC_KW  shift 13
+	LET_KW  shift 14
+	RET_KW  shift 128
+	TRUE_KW  shift 15
+	UNDEF_KW  shift 16
+	.  error
+
+	expr1  goto 129
+	stmt  goto 130
+	stmtAux  goto 23
+	expr1Aux  goto 24
+	value1  goto 25
+	value1Aux  goto 26
+	bool  goto 27
+	lambda1  goto 28
+	lambda1Aux  goto 29
+	blockAux  goto 136
+	boolAux  goto 30
+
+
+state 135
+	lambda1Aux : FUNC_KW lambda1_0_1 EXPR1_18_1 ident_list LAMBDA1_0_4 LAMBDA1_0_5 block LAMBDA1_0_7 .  (40)
+
+	.  reduce 40
+
+
+state 136
+	blockAux : stmt BLOCK_1_1 blockAux .  (46)
+
+	.  reduce 46
+
+
+53 terminals, 41 nonterminals
+78 grammar rules, 137 states

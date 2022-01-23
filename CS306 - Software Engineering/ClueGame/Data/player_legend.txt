@@ -1,0 +1,6 @@
+Professor Plum, magenta, player, 8, 6
+Mrs. White, white, computer, 20, 5
+Mr. Green, green, computer, 21, 14
+Mrs. Peacock, blue, computer, 12, 19
+Miss Scarlet, red, computer, 9, 14
+Colonel Mustard, yellow, computer, 9, 9
